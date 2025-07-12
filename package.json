@@ -14,5 +14,13 @@
         "body-parser": "^1.20.2",
         "cors": "^2.8.5",
         "express": "^4.18.4"
+    },
+    "unitConfig": {
+        "listenerPort": 3081,
+        "script": "server.js"
+    },
+    "unitRoute": {
+        "uri": "/webtest/",
+        "port": 3081
     }
 }

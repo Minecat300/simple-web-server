@@ -76,13 +76,15 @@ function setupClient(app, ipLogPath, blockedIpsPath) {
     });
 }
 
-function createServer(PORT, ipLogPath, blockedIpsPath, SSlPath, htmlFile) {
+function createServer(PORT, ipLogPath, blockedIpsPath, SSlPath, htmlFile, useHttps = true) {
     const app = express();
 
-    const options = {
-        key: fs.readFileSync(SSlPath + "/privkey.pem"),
-        cert: fs.readFileSync(SSlPath + "/fullchain.pem")
-    };
+    if (useHttps) {
+        const options = {
+            key: fs.readFileSync(SSlPath + "/privkey.pem"),
+            cert: fs.readFileSync(SSlPath + "/fullchain.pem")
+        };
+    }
 
     //app.use(cors());
     app.use(bodyParser.json());
@@ -106,9 +108,15 @@ function createServer(PORT, ipLogPath, blockedIpsPath, SSlPath, htmlFile) {
         return res.status(200).json({ message: "Ping recived" });
     });
 
-    https.createServer(options, app).listen(PORT, () => {
-        console.log(`This HTTPS server is running on port: ${PORT}`);
-    });
+    if (useHttps) {
+        https.createServer(options, app).listen(PORT, () => {
+            console.log(`This HTTPS server is running on port: ${PORT}`);
+        });
+    } else {
+        app.listen(PORT, () => {
+            console.log(`This HTTP server is running on port: ${PORT}`);
+        });
+    }
 
     return app;
 }
