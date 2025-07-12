@@ -1,0 +1,18 @@
+{
+    "name": "simple-web-server",
+    "version": "1.0.0",
+    "description": "A simple web server for testing",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "Minecat",
+    "license": "MIT",
+    "installPath": "/simpleWebServer/",
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "express": "^4.18.4"
+    }
+}
