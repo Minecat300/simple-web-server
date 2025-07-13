@@ -79,8 +79,10 @@ function setupClient(app, ipLogPath, blockedIpsPath) {
 function createServer(PORT, ipLogPath, blockedIpsPath, SSlPath, htmlFile, useHttps = true) {
     const app = express();
 
+    let options = {};
+
     if (useHttps) {
-        const options = {
+        options = {
             key: fs.readFileSync(SSlPath + "/privkey.pem"),
             cert: fs.readFileSync(SSlPath + "/fullchain.pem")
         };
