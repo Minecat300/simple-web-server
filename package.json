@@ -17,6 +17,7 @@
     },
     "nginxConfig": {
         "uri": "webtest/",
-        "port": 3081
+        "port": 3081,
+        "https": true
     }
 }
