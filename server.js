@@ -8,4 +8,4 @@ const htmlFile = fs.readFileSync(indexPath, 'utf8');
 
 const PORT = 3081;
 
-const app = createServer(PORT, "ipLog.log", "blockedIps.json", "/etc/letsencrypt/live/flameys.ddns.net", htmlFile);
+const app = createServer(PORT, "ipLog.log", "blockedIps.json", "/etc/letsencrypt/live/flameys.net", htmlFile);
