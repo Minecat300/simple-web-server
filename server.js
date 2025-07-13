@@ -1,9 +1,8 @@
 const express = require("express");
 const fs = require("fs");
-const path = require('path');
 
 const { createServer, writeToFile, getFromFile, hashSHA512 } = require("./networkingEngine");
-const index = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
+const htmlFile = fs.readFileSync("./public/index.html", "utf8");
 
 const PORT = 3081;
 
